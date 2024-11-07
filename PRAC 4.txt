@@ -1,0 +1,101 @@
+PRAC 4:
+CODE:
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compare Strings</title>
+</head>
+<body>
+
+    <h1>String Comparison</h1>
+    <p>Enter two strings to compare:</p>
+
+    <!-- Input fields for strings -->
+    <input type="text" id="str1" placeholder="Enter first string">
+    <input type="text" id="str2" placeholder="Enter second string">
+    <button onclick="compareStrings()">Compare Strings</button>
+
+    <!-- Area to display results -->
+    <p id="result"></p>
+
+    <script>
+        function compareStrings() {
+            // Get the values from the input fields
+            var str1 = document.getElementById("str1").value;
+            var str2 = document.getElementById("str2").value;
+
+            var resultText = "";
+
+            // Check if the two strings are exactly the same
+            if (str1 === str2) {
+                resultText += "The strings are exactly the same.<br>";
+            } else {
+                resultText += "The strings are not the same.<br>";
+            }
+
+            // Lexicographical comparison
+            if (str1 < str2) {
+                resultText += `"${str1}" comes before "${str2}" alphabetically.<br>`;
+            } else if (str1 > str2) {
+                resultText += `"${str1}" comes after "${str2}" alphabetically.<br>`;
+            } else {
+                resultText += `"${str1}" and "${str2}" are lexicographically equal.<br>`;
+            }
+
+            // Check if one string contains the other
+            if (str1.includes(str2)) {
+                resultText += `The first string contains the second string: "${str2}" is in "${str1}".<br>`;
+            } else if (str2.includes(str1)) {
+                resultText += `The second string contains the first string: "${str1}" is in "${str2}".<br>`;
+            } else {
+                resultText += "Neither string contains the other.<br>";
+            }
+
+            // Display the result in the 'result' paragraph
+            document.getElementById("result").innerHTML = resultText;
+        }
+    </script>
+
+</body>
+</html>
+-----------------------------------------------------------------------
+Syntax:
+1. Get User Input:
+2. Exact Match Check:
+if (str1 === str2) {
+    // Code for exact match
+}
+3.Lexicographical Comparison:
+if (str1 < str2) {
+    // Code for when str1 comes before str2 alphabetically
+} else if (str1 > str2) {
+    // Code for when str1 comes after str2 alphabetically
+} else {
+    // Code for when str1 and str2 are equal lexicographically
+}
+4. Containment Check:
+if (str1.includes(str2)) {
+    // Code for when str1 contains str2
+} else if (str2.includes(str1)) {
+    // Code for when str2 contains str1
+} else {
+    // Code for when neither string contains the other
+}
+5.Display Results:
+document.getElementById("result").innerHTML = resultText;
+-------------------------------------------------------------------
+PSEUDO CODE:
+Prompt the user to enter two strings, str1 and str2.
+Check if str1 and str2 are exactly the same:
+If they are, display that the strings are the same.
+If they aren’t, display that the strings are not the same.
+Lexicographical Comparison:
+If str1 comes before str2, display that str1 comes before str2.
+If str1 comes after str2, display that str1 comes after str2.
+If str1 and str2 are equal lexicographically, display that they are equal.
+Check if one string contains the other:
+If str1 contains str2, display that the first string contains the second.
+If str2 contains str1, display that the second string contains the first.
+Otherwise, display that neither string contains the other.

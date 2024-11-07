@@ -1,0 +1,113 @@
+PRAC 1:
+TRIANGLE:
+CODE:
+function areaOfTriangle(base, height) {
+    return 0.5 * base * height;
+}
+
+// Example usage:
+var base = 5;
+var height = 10;
+console.log("Area of Triangle: " + areaOfTriangle(base, height));
+
+SYNTAX:
+function areaOfTriangle(base, height) {
+    return 0.5 * base * height;
+}
+
+PSEUDO CODE:
+Input: Base and height of the triangle.
+Process: Calculate area as 0.5 * base * height.
+Output: Return the calculated area.
+--------------------------------------------------------------------------------------------
+CODE:
+// Function to calculate the area of a rectangle
+function calculateRectangleArea() {
+    var length = parseFloat(prompt("Enter the length of the rectangle:"));
+    var width = parseFloat(prompt("Enter the width of the rectangle:"));
+
+    // Check if inputs are valid numbers
+    if (isNaN(length) || isNaN(width)) {
+        document.getElementById("rectangleResult").innerHTML = "Invalid input. Please enter valid numbers.";
+    } else {
+        var area = length * width;
+        document.getElementById("rectangleResult").innerHTML = "Area of Rectangle: " + area.toFixed(2);
+    }
+}
+
+SYNTAX:
+function calculateRectangleArea() {
+    // Prompt the user for length and width of the rectangle
+    var length = parseFloat(prompt("Enter the length of the rectangle:"));
+    var width = parseFloat(prompt("Enter the width of the rectangle:"));
+
+    // Check if the input is valid
+    if (isNaN(length) || isNaN(width)) {
+        document.getElementById("rectangleResult").innerHTML = "Invalid input. Please enter valid numbers.";
+    } else {
+        // Calculate the area of the rectangle
+        var area = length * width;
+        // Display the result in the HTML element with ID "rectangleResult"
+        document.getElementById("rectangleResult").innerHTML = "Area of Rectangle: " + area.toFixed(2);
+    }
+}
+
+1. Pseudocode for Rectangle Area Calculation
+Prompt the user to enter the length of the rectangle.
+Prompt the user to enter the width of the rectangle.
+Validate the inputs:
+If length or width is not a number, display an error message.
+Calculate the area of the rectangle:
+area = length * width
+Display the calculated area.
+--------------------------------------------------------------------------------------------------------
+CIRCLE:
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Area Calculator</title>
+</head>
+<body>
+
+    <h1>Area Calculator</h1>
+
+    <!-- Button and result display for Rectangle -->
+    <button onclick="calculateRectangleArea()">Calculate Area of Rectangle</button>
+    <p id="rectangleResult"></p>
+
+    <!-- Button and result display for Circle -->
+    <button onclick="calculateCircleArea()">Calculate Area of Circle</button>
+    <p id="circleResult"></p>
+
+    <!-- Including separate JavaScript files for each calculation -->
+    <script src="rectangle.js"></script>
+    <script src="circle.js"></script>
+
+</body>
+</html>
+
+SYNTAX:
+function calculateCircleArea() {
+    // Prompt the user for the radius of the circle
+    var radius = parseFloat(prompt("Enter the radius of the circle:"));
+
+    // Check if the input is valid
+    if (isNaN(radius)) {
+        document.getElementById("circleResult").innerHTML = "Invalid input. Please enter a valid number.";
+    } else {
+        // Calculate the area of the circle
+        var area = Math.PI * radius * radius;
+        // Display the result in the HTML element with ID "circleResult"
+        document.getElementById("circleResult").innerHTML = "Area of Circle: " + area.toFixed(2);
+    }
+}
+
+PSEUDO:
+Prompt the user to enter the radius of the circle.
+Validate the input:
+If radius is not a number, display an error message.
+Calculate the area of the circle:
+area = π * radius * radius
+Display the calculated area.

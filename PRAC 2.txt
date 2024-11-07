@@ -1,0 +1,68 @@
+PRAC 2:
+CODE:
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multiplication Table Generator</title>
+</head>
+<body>
+
+    <h1>Multiplication Table Generator</h1>
+    <button onclick="generateMultiplicationTable()">Generate Table</button>
+    <div id="tableResult"></div>
+
+    <script>
+        function generateMultiplicationTable() {
+            // Prompt the user for a number
+            var number = parseInt(prompt("Enter a number to generate its multiplication table:"));
+
+            // Validate the input
+            if (isNaN(number)) {
+                document.getElementById("tableResult").innerHTML = "Invalid input. Please enter a valid number.";
+                return;
+            }
+
+            // Generate the multiplication table
+            var result = "<h3>Multiplication Table for " + number + "</h3><ul>";
+            for (var i = 1; i <= 10; i++) {
+                result += "<li>" + number + " x " + i + " = " + (number * i) + "</li>";
+            }
+            result += "</ul>";
+
+            // Display the table
+            document.getElementById("tableResult").innerHTML = result;
+        }
+    </script>
+
+</body>
+</html>
+-------------------------------------------------------------------------------
+SYNTAX:
+function generateMultiplicationTable() {
+    var number = parseInt(prompt("Enter a number to generate its multiplication table:"));
+    
+    if (isNaN(number)) {
+        document.getElementById("tableResult").innerHTML = "Invalid input. Please enter a valid number.";
+        return;
+    }
+
+    var result = "<h3>Multiplication Table for " + number + "</h3><ul>";
+    for (var i = 1; i <= 10; i++) {
+        result += "<li>" + number + " x " + i + " = " + (number * i) + "</li>";
+    }
+    result += "</ul>";
+
+    document.getElementById("tableResult").innerHTML = result;
+}
+----------------------------------------------------------------------------------
+PSUDOCODE:
+Prompt the user to enter a number.
+Validate the input:
+If the input is not a valid number, display an error message.
+Initialize an empty result string.
+Loop through numbers 1 to 10.
+For each i, calculate number * i.
+Append the result of number x i to the result string.
+Display the multiplication table.

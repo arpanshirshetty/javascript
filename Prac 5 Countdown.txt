@@ -1,0 +1,82 @@
+Prac 5:
+<!DOCTYPE HTML>
+<html>
+<head>
+<style>
+p {
+    text-align: center;
+    font-size: 40px;
+}
+</style>
+</head>
+<body>
+<p id='demo'></p>
+<script>
+var deadline = new Date("2024-09-12T11:20:52").getTime();
+var myfunc = setInterval(function() {
+    var now = new Date().getTime();
+    var t = deadline - now;
+
+    if (t <= 0) {
+        clearInterval(myfunc);
+        document.getElementById("demo").innerHTML = "EXPIRED";
+        return;
+    }
+
+    var days = Math.floor(t / (1000 * 60 * 60 * 24));
+    var hours = Math.floor((t % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    var minutes = Math.floor((t % (1000 * 60 * 60)) / (1000 * 60));
+    var seconds = Math.floor((t % (1000 * 60)) / 1000);
+
+    document.getElementById("demo").innerHTML = 
+        "Time remaining: " + days + "d " + hours + "h " + minutes + "m " + seconds + "s";
+}, 1000);
+</script>
+</body>
+</html>
+----------------------------------------------------------------------------------------------
+Stntax:
+// Set the target date and time
+var deadline = new Date("YYYY-MM-DDTHH:MM:SS").getTime();
+
+// Start the countdown timer
+var myfunc = setInterval(function() {
+    // Get the current time
+    var now = new Date().getTime();
+
+    // Calculate the time difference
+    var timeRemaining = deadline - now;
+
+    // Check if time is up
+    if (timeRemaining <= 0) {
+        clearInterval(myfunc);
+        document.getElementById("demo").innerHTML = "EXPIRED";
+        return;
+    }
+
+    // Calculate days, hours, minutes, and seconds from timeRemaining
+    var days = Math.floor(timeRemaining / (1000 * 60 * 60 * 24));
+    var hours = Math.floor((timeRemaining % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    var minutes = Math.floor((timeRemaining % (1000 * 60 * 60)) / (1000 * 60));
+    var seconds = Math.floor((timeRemaining % (1000 * 60)) / 1000);
+
+    // Display the result
+    document.getElementById("demo").innerHTML = 
+        "Time remaining: " + days + "d " + hours + "h " + minutes + "m " + seconds + "s";
+}, 1000);
+----------------------------------------------------------------------------------
+Pseudo code:
+1.Set Target Date and Time: Define the target date and time by converting it into milliseconds since January 1, 1970.
+2.Start Countdown Loop: Start an interval that repeats every second (1000 milliseconds).
+3.Calculate Time Remaining:
+Get the current time.
+Subtract the current time from the target time to find the time remaining.
+4.Check Expiration:
+If timeRemaining is less than or equal to zero, clear the interval and display "EXPIRED".
+5.Calculate Days, Hours, Minutes, and Seconds:
+6.Calculate the number of days by dividing the time remaining by the number of milliseconds in a day.
+7.Calculate hours by taking the remainder after days and dividing by the number of milliseconds in an hour.
+8.Calculate minutes by taking the remainder after hours and dividing by the number of milliseconds in a minute.
+9.Calculate seconds by taking the remainder after minutes and dividing by 1000 (milliseconds in a second).
+10.Display the Countdown:
+Update the HTML element with the formatted time as days d hours h minutes m seconds s.

@@ -1,0 +1,112 @@
+PRAC 6:
+CODE:
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array Operations</title>
+</head>
+<body>
+
+    <h1>Array Operations</h1>
+    <p>Enter a value to perform the operations:</p>
+
+    <!-- Input for adding element -->
+    <input type="text" id="value" placeholder="Enter a value">
+    <button onclick="addElement()">Add Element to Array</button><br><br>
+
+    <!-- Input for removing element -->
+    <input type="text" id="removeValue" placeholder="Enter value to remove">
+    <button onclick="removeElement()">Remove Element from Array</button><br><br>
+
+    <!-- Input for checking value presence -->
+    <input type="text" id="checkValue" placeholder="Enter value to check">
+    <button onclick="checkContains()">Check if Array Contains Value</button><br><br>
+
+    <!-- Button to empty the array -->
+    <button onclick="emptyArray()">Empty the Array</button><br><br>
+
+    <!-- Display the array -->
+    <h2>Current Array:</h2>
+    <p id="arrayDisplay"></p>
+
+    <script>
+        // Initialize an empty array
+        var myArray = [];
+
+        // Function to add an element to the array
+        function addElement() {
+            var value = document.getElementById("value").value;
+            myArray.push(value); // Add value to the end of the array
+            document.getElementById("value").value = ''; // Clear the input field
+            displayArray(); // Update the displayed array
+        }
+
+        // Function to remove a specific element from the array
+        function removeElement() {
+            var removeValue = document.getElementById("removeValue").value;
+            var index = myArray.indexOf(removeValue);
+            if (index !== -1) {
+                myArray.splice(index, 1); // Remove the element at the found index
+                alert(removeValue + " has been removed from the array.");
+            } else {
+                alert(removeValue + " is not in the array.");
+            }
+            document.getElementById("removeValue").value = ''; // Clear the input field
+            displayArray(); // Update the displayed array
+        }
+
+        // Function to check if a value exists in the array
+        function checkContains() {
+            var checkValue = document.getElementById("checkValue").value;
+            if (myArray.includes(checkValue)) {
+                alert(checkValue + " is present in the array.");
+            } else {
+                alert(checkValue + " is not present in the array.");
+            }
+        }
+
+        // Function to empty the array
+        function emptyArray() {
+            myArray.length = 0; // Set the length of the array to 0 to empty it
+            alert("The array has been emptied.");
+            displayArray(); // Update the displayed array
+        }
+
+        // Function to display the current state of the array
+        function displayArray() {
+            document.getElementById("arrayDisplay").innerHTML = myArray.join(', ');
+        }
+    </script>
+
+</body>
+</html>
+------------------------------------------------------------------
+SYNTAX:
+1.Adding an Element:
+myArray.push(element);
+push() adds a new element to the end of the array.
+2.Removing an Element:
+var index = myArray.indexOf(element);
+if (index !== -1) {
+    myArray.splice(index, 1);
+}
+indexOf() returns the index of the element if it exists, or -1 if not.
+splice() removes the element at the specified index.
+3.Checking if an Element Exists:
+myArray.includes(element);
+includes() checks if the specified element is present in the array.
+4.Emptying the Array:
+myArray.length = 0;
+Setting the array's length to 0 removes all elements.
+----------------------------------------------------------------------
+PSEUDO:
+The program starts with an empty array, myArray.
+Adding an Element: The user can input a value to add to the array by clicking the "Add Element" button.
+Removing an Element: The user can input a value to remove from the array by clicking the "Remove Element" button. The element is removed only if it exists.
+Check if Element Exists: The user can input a value to check if it's present in the array.
+Emptying the Array: The user can empty the array by clicking the "Empty the Array" button.
+After each operation, the array is displayed on the webpage.
+User Interaction:
+The user interacts with the webpage by inputting values into the text fields and clicking the corresponding buttons to perform the operations.

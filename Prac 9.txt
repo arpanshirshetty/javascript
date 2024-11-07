@@ -1,0 +1,128 @@
+Prac 9:
+CODE:
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Information Form</title>
+</head>
+<body>
+
+    <h1>Student Information Form</h1>
+
+    <!-- Student Information Form -->
+    <form id="studentForm" onsubmit="return validateForm()">
+        Name: <input type="text" id="name" placeholder="Enter Name"><br><br>
+        Address: <input type="text" id="address" placeholder="Enter Address"><br><br>
+        City: <input type="text" id="city" placeholder="Enter City"><br><br>
+        State: <input type="text" id="state" placeholder="Enter State"><br><br>
+        Gender: 
+        <input type="radio" id="male" name="gender" value="Male"> Male
+        <input type="radio" id="female" name="gender" value="Female"> Female<br><br>
+        Mobile Number: <input type="text" id="mobile" placeholder="Enter Mobile Number"><br><br>
+        Email ID: <input type="text" id="email" placeholder="Enter Email ID"><br><br>
+        <button type="submit">Submit</button>
+    </form>
+
+    <p id="errorMessages" style="color:red;"></p>
+    <p id="welcomeMessage" style="color:green;"></p>
+
+    <script>
+        function validateForm() {
+            // Clear previous messages
+            document.getElementById("errorMessages").innerHTML = "";
+            document.getElementById("welcomeMessage").innerHTML = "";
+
+            // Get form values
+            var name = document.getElementById("name").value;
+            var address = document.getElementById("address").value;
+            var city = document.getElementById("city").value;
+            var state = document.getElementById("state").value;
+            var gender = document.querySelector('input[name="gender"]:checked');
+            var mobile = document.getElementById("mobile").value;
+            var email = document.getElementById("email").value;
+
+            var errorMessages = [];
+
+            // Validate Name (should only contain letters and spaces)
+            var namePattern = /^[A-Za-z\s]+$/;
+            if (!namePattern.test(name)) {
+                errorMessages.push("Please enter a valid name (letters and spaces only).");
+            }
+
+            // Validate Mobile Number (should be 10 digits)
+            var mobilePattern = /^[0-9]{10}$/;
+            if (!mobilePattern.test(mobile)) {
+                errorMessages.push("Please enter a valid mobile number (10 digits).");
+            }
+
+            // Validate Email ID (basic email format validation)
+            var emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+            if (!emailPattern.test(email)) {
+                errorMessages.push("Please enter a valid email ID.");
+            }
+
+            // Check if any field is empty
+            if (!name || !address || !city || !state || !gender || !mobile || !email) {
+                errorMessages.push("All fields are required.");
+            }
+
+            // Display error messages if any
+            if (errorMessages.length > 0) {
+                document.getElementById("errorMessages").innerHTML = errorMessages.join("<br>");
+                return false; // Prevent form submission
+            }
+
+            // Display success message
+            document.getElementById("welcomeMessage").innerHTML = "Congratulations, " + name + "! Welcome to our system.";
+            return false; // Prevent form submission for demo purposes
+        }
+    </script>
+
+</body>
+</html>
+---------------------------------------------------------------------------------------------------------
+Syntax:
+Name Validation:
+var namePattern = /^[A-Za-z\s]+$/;
+if (!namePattern.test(name)) {
+    errorMessages.push("Please enter a valid name (letters and spaces only).");
+}
+Validates that the name consists of letters and spaces only.
+Mobile Number Validation:
+var mobilePattern = /^[0-9]{10}$/;
+if (!mobilePattern.test(mobile)) {
+    errorMessages.push("Please enter a valid mobile number (10 digits).");
+}
+Validates that the mobile number consists of exactly 10 digits.
+Email Validation:
+
+var emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+if (!emailPattern.test(email)) {
+    errorMessages.push("Please enter a valid email ID.");
+}
+Validates that the email follows a basic format (example@example.com).
+Check for Empty Fields:
+if (!name || !address || !city || !state || !gender || !mobile || !email) {
+    errorMessages.push("All fields are required.");
+}
+Ensures that all form fields are filled.
+------------------------------------------------------------------------------------------------------------
+Form Structure:
+
+The form collects the student's Name, Address, City, State, Gender, Mobile Number, and Email ID.
+Each field is associated with a corresponding input box or radio button for gender selection.
+Validation:
+
+The validateForm() function performs checks when the form is submitted:
+It uses regular expressions to validate the name, mobile number, and email.
+It checks if all fields are filled in and displays error messages if any validations fail.
+Error Handling:
+
+If any validation fails, error messages are shown at the top of the form, and the form submission is stopped by returning false.
+If all fields are valid, a success message is displayed with the student's name.
+User Interaction:
+The user fills out the form, and when they click Submit, the form is validated.
+If any of the fields have incorrect values (e.g., name contains numbers, email is invalid), appropriate error messages will appear.
+If all fields are valid, a success message with "Congratulations" and the student's name is shown.

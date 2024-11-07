@@ -1,0 +1,57 @@
+Prac 8:
+code:
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homepage with Background Color Change</title>
+</head>
+<body>
+
+    <h1>Welcome to My Website!</h1>
+    <p>Hover over the button to change the background color, or click in the text field.</p>
+
+    <!-- Button to trigger mouseover event -->
+    <button id="colorButton" onmouseover="changeBackgroundColor('yellow')">Hover Over Me</button><br><br>
+
+    <!-- Text input to trigger focus event -->
+    <input type="text" id="focusInput" placeholder="Click to focus and change background color" onfocus="changeBackgroundColor('lightblue')"><br><br>
+
+    <script>
+        // Function to change background color
+        function changeBackgroundColor(color) {
+            document.body.style.backgroundColor = color;
+        }
+    </script>
+
+</body>
+</html>
+--------------------------------------------------------------------------------------
+Syntax:
+On Mouse Over Event:
+element.onmouseover = function() {
+    // Code to change the background color
+    document.body.style.backgroundColor = 'desiredColor';
+};
+The onmouseover event triggers when the mouse pointer is over the button, and the changeBackgroundColor() function changes the background color of the body.
+On Focus Event:
+element.onfocus = function() {
+    // Code to change the background color
+    document.body.style.backgroundColor = 'desiredColor';
+};
+The onfocus event triggers when the user clicks on the text input field (giving it focus). It calls the changeBackgroundColor() function to change the background color of the body.
+-------------------------------------------------------------------------------------------
+Pseudo code:
+HTML:
+
+The page contains a heading (<h1>) and a paragraph (<p>) to provide some context.
+A button with an onmouseover event is used to trigger the background color change to yellow when hovered over.
+An input field with an onfocus event changes the background color to lightblue when the user clicks on the input field.
+JavaScript:
+
+The changeBackgroundColor() function is used to set the background color of the webpage by manipulating the document.body.style.backgroundColor property.
+This function is called both when the mouse hovers over the button and when the input field receives focus.
+User Interaction:
+Mouse Over: The user hovers the mouse over the button, which changes the background color to yellow.
+Focus: The user clicks inside the text input field, which changes the background color to light blue.

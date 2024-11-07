@@ -1,0 +1,112 @@
+PRAC 7:
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Set Operations</title>
+</head>
+<body>
+
+    <h1>Set Operations</h1>
+    
+    <!-- Input for Set A -->
+    <input type="text" id="setA" placeholder="Enter elements of Set A (comma separated)">
+    <br><br>
+
+    <!-- Input for Set B -->
+    <input type="text" id="setB" placeholder="Enter elements of Set B (comma separated)">
+    <br><br>
+
+    <!-- Buttons for operations -->
+    <button onclick="union()">Union</button>
+    <button onclick="intersection()">Intersection</button>
+    <button onclick="difference()">Difference (A - B)</button>
+    <button onclick="setDifference()">Set Difference (B - A)</button>
+
+    <h2>Results:</h2>
+    <p id="result"></p>
+
+    <script>
+        // Function to convert input string to set
+        function stringToSet(input) {
+            let elements = input.split(",").map(item => item.trim());
+            return new Set(elements);
+        }
+
+        // Function to display result
+        function displayResult(resultSet) {
+            document.getElementById("result").innerHTML = "Result: {" + Array.from(resultSet).join(", ") + "}";
+        }
+
+        // Union of two sets
+        function union() {
+            let setA = stringToSet(document.getElementById("setA").value);
+            let setB = stringToSet(document.getElementById("setB").value);
+
+            let result = new Set([...setA, ...setB]);
+            displayResult(result);
+        }
+
+        // Intersection of two sets
+        function intersection() {
+            let setA = stringToSet(document.getElementById("setA").value);
+            let setB = stringToSet(document.getElementById("setB").value);
+
+            let result = new Set([...setA].filter(x => setB.has(x)));
+            displayResult(result);
+        }
+
+        // Difference of Set A and Set B (A - B)
+        function difference() {
+            let setA = stringToSet(document.getElementById("setA").value);
+            let setB = stringToSet(document.getElementById("setB").value);
+
+            let result = new Set([...setA].filter(x => !setB.has(x)));
+            displayResult(result);
+        }
+
+        // Set Difference of Set B and Set A (B - A)
+        function setDifference() {
+            let setA = stringToSet(document.getElementById("setA").value);
+            let setB = stringToSet(document.getElementById("setB").value);
+
+            let result = new Set([...setB].filter(x => !setA.has(x)));
+            displayResult(result);
+        }
+    </script>
+
+</body>
+</html>
+------------------------------------------------------------------------------------
+Syntax:
+Union:
+
+let result = new Set([...setA, ...setB]);
+The union() function combines all elements from both sets using the spread operator ....
+Intersection:
+let result = new Set([...setA].filter(x => setB.has(x)));
+The intersection() function finds common elements between setA and setB by filtering setA for elements that also exist in setB.
+Difference (A - B):
+let result = new Set([...setA].filter(x => !setB.has(x)));
+The difference() function filters setA for elements that are not in setB.
+Set Difference (B - A):
+let result = new Set([...setB].filter(x => !setA.has(x)));
+The setDifference() function filters setB for elements that are not in setA.
+------------------------------------------------------------------------------------
+Pseudo:
+Input Parsing:
+
+The stringToSet() function converts a comma-separated string into a Set object by splitting the string and trimming spaces around each element.
+Set Operations:
+
+Union: Combines all elements from both sets.
+Intersection: Filters out the elements that exist in both sets.
+Difference (A - B): Filters out the elements in setA that do not exist in setB.
+Set Difference (B - A): Filters out the elements in setB that do not exist in setA.
+Displaying Results:
+
+The result is displayed by converting the Set into an array and joining it into a string format using Array.from(resultSet).join(", ").
+User Interaction:
+The user inputs two sets (as comma-separated values) in the text fields and then clicks one of the buttons to perform the selected set operation.
+The results of the operation are displayed on the screen in a formatted string.

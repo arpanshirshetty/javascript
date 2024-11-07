@@ -1,0 +1,98 @@
+PRAC 3:
+CODE:
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>String Operations</title>
+</head>
+<body>
+
+    <h1>String Operations</h1>
+    <button onclick="reverseString()">Reverse String</button>
+    <button onclick="replaceCharacters()">Replace Characters</button>
+    <button onclick="checkPalindrome()">Check Palindrome</button>
+
+    <p id="result"></p>
+
+    <script>
+        // Reverse a given string
+        function reverseString() {
+            var str = prompt("Enter a string to reverse:");
+            var reversedStr = str.split("").reverse().join("");
+            document.getElementById("result").innerHTML = "Reversed String: " + reversedStr;
+        }
+
+        // Replace characters in a string
+        function replaceCharacters() {
+            var str = prompt("Enter a string:");
+            var charToReplace = prompt("Enter the character to replace:");
+            var replacementChar = prompt("Enter the replacement character:");
+            var replacedStr = str.split(charToReplace).join(replacementChar);
+            document.getElementById("result").innerHTML = "Modified String: " + replacedStr;
+        }
+
+        // Check if a string is a palindrome
+        function checkPalindrome() {
+            var str = prompt("Enter a string to check for palindrome:");
+            var reversedStr = str.split("").reverse().join("");
+            if (str === reversedStr) {
+                document.getElementById("result").innerHTML = str + " is a palindrome.";
+            } else {
+                document.getElementById("result").innerHTML = str + " is not a palindrome.";
+            }
+        }
+    </script>
+
+</body>
+</html>
+--------------------------------------------------------------------------
+SYNTAX:
+REVERSE:
+function reverseString() {
+    var str = prompt("Enter a string to reverse:");
+    var reversedStr = str.split("").reverse().join("");
+    document.getElementById("result").innerHTML = "Reversed String: " + reversedStr;
+}
+
+REPLACE:
+function replaceCharacters() {
+    var str = prompt("Enter a string:");
+    var charToReplace = prompt("Enter the character to replace:");
+    var replacementChar = prompt("Enter the replacement character:");
+    var replacedStr = str.split(charToReplace).join(replacementChar);
+    document.getElementById("result").innerHTML = "Modified String: " + replacedStr;
+}
+
+PALINDROME:
+function checkPalindrome() {
+    var str = prompt("Enter a string to check for palindrome:");
+    var reversedStr = str.split("").reverse().join("");
+    if (str === reversedStr) {
+        document.getElementById("result").innerHTML = str + " is a palindrome.";
+    } else {
+        document.getElementById("result").innerHTML = str + " is not a palindrome.";
+    }
+}
+
+---------------------------------------------------------------------------------
+PSEUDO:
+1. Reverse String
+Prompt the user for a string.
+Split the string into an array of characters.
+Reverse the array.
+Join the array back into a string.
+Display the reversed string.
+2. Replace Characters in String
+Prompt the user for a string.
+Prompt the user for the character to replace.
+Prompt the user for the replacement character.
+Replace all occurrences of the character in the string.
+Display the modified string.
+3. Check if a String is a Palindrome
+Prompt the user for a string.
+Reverse the string.
+Compare the original and reversed strings.
+If they are the same, display that it is a palindrome.
+Otherwise, display that it is not a palindrome.

@@ -1,0 +1,189 @@
+Prac 10:
+CODE:
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Calculator</title>
+</head>
+<body>
+
+    <h1>Simple Calculator</h1>
+
+    <!-- Calculator Input and Output -->
+    <input type="text" id="display" disabled><br><br>
+
+    <!-- Calculator Buttons -->
+    <button onclick="appendNumber(1)">1</button>
+    <button onclick="appendNumber(2)">2</button>
+    <button onclick="appendNumber(3)">3</button>
+    <button onclick="appendNumber(4)">4</button>
+    <button onclick="appendNumber(5)">5</button>
+    <button onclick="appendNumber(6)">6</button>
+    <button onclick="appendNumber(7)">7</button>
+    <button onclick="appendNumber(8)">8</button>
+    <button onclick="appendNumber(9)">9</button>
+    <button onclick="appendNumber(0)">0</button><br><br>
+
+    <button onclick="clearDisplay()">C</button>
+    <button onclick="performOperation('+')">+</button>
+    <button onclick="performOperation('-')">-</button>
+    <button onclick="performOperation('*')">*</button>
+    <button onclick="performOperation('/')">/</button><br><br>
+
+    <button onclick="performSquare()">x²</button>
+    <button onclick="calculateResult()">=</button>
+
+    <script>
+        // Variable to hold the current value being typed in the display
+        let currentInput = "";
+        let previousInput = "";
+        let operator = "";
+
+        // Append a number to the display
+        function appendNumber(num) {
+            currentInput += num;
+            document.getElementById("display").value = currentInput;
+        }
+
+        // Clear the display
+        function clearDisplay() {
+            currentInput = "";
+            previousInput = "";
+            operator = "";
+            document.getElementById("display").value = "";
+        }
+
+        // Perform operation (addition, subtraction, multiplication, division)
+        function performOperation(op) {
+            if (currentInput === "") {
+                alert("Please enter a number first!");
+                return;
+            }
+            if (previousInput !== "") {
+                alert("Please calculate or clear previous operation!");
+                return;
+            }
+            operator = op;
+            previousInput = currentInput;
+            currentInput = "";
+        }
+
+        // Perform square operation
+        function performSquare() {
+            if (currentInput === "") {
+                alert("Please enter a number first!");
+                return;
+            }
+            currentInput = Math.pow(parseFloat(currentInput), 2).toString();
+            document.getElementById("display").value = currentInput;
+        }
+
+        // Calculate result based on the operator
+        function calculateResult() {
+            if (previousInput === "" || currentInput === "") {
+                alert("Incomplete expression!");
+                return;
+            }
+            let result;
+            let prev = parseFloat(previousInput);
+            let curr = parseFloat(currentInput);
+
+            // Perform the calculation based on the operator
+            switch (operator) {
+                case "+":
+                    result = prev + curr;
+                    break;
+                case "-":
+                    result = prev - curr;
+                    break;
+                case "*":
+                    result = prev * curr;
+                    break;
+                case "/":
+                    if (curr === 0) {
+                        alert("Cannot divide by zero!");
+                        return;
+                    }
+                    result = prev / curr;
+                    break;
+                default:
+                    alert("Invalid operator!");
+                    return;
+            }
+
+            // Display the result
+            document.getElementById("display").value = result;
+            currentInput = result.toString();
+            previousInput = "";
+            operator = "";
+        }
+    </script>
+
+</body>
+</html>
+---------------------------------------------------------------------------------------------
+Syntax:
+Appending a Number to the Display:
+
+function appendNumber(num) {
+    currentInput += num;
+    document.getElementById("display").value = currentInput;
+}
+Appends a number to the current input value and updates the display.
+Performing Operations:
+function performOperation(op) {
+    if (currentInput === "") {
+        alert("Please enter a number first!");
+        return;
+    }
+    operator = op;
+    previousInput = currentInput;
+    currentInput = "";
+}
+Sets the operator (e.g., +, -, *, /) and stores the current input as the previous input for later calculation.
+Calculating the Result:
+function calculateResult() {
+    if (previousInput === "" || currentInput === "") {
+        alert("Incomplete expression!");
+        return;
+    }
+    let result;
+    // Perform the calculation based on the operator
+    switch (operator) {
+        case "+":
+            result = prev + curr;
+            break;
+        // Other cases for subtraction, multiplication, and division
+    }
+    document.getElementById("display").value = result;
+}
+Computes the result based on the chosen operator and displays it. It checks if the operation is incomplete or if there's a division by zero.
+Performing Square of a Number:
+function performSquare() {
+    if (currentInput === "") {
+        alert("Please enter a number first!");
+        return;
+    }
+    currentInput = Math.pow(parseFloat(currentInput), 2).toString();
+    document.getElementById("display").value = currentInput;
+}
+Performs a square operation on the current input value and updates the display.
+-----------------------------------------------------------------------------------------------------------------------
+Pseudo Code:
+Form Layout:
+
+The calculator uses an input field to show the current number or result.
+Buttons are created for numbers 0-9, operations (+, -, *, /), clear (C), and square (x²).
+JavaScript Functions:
+
+appendNumber(num) appends numbers to the display.
+clearDisplay() resets all fields.
+performOperation(op) stores the operator and prepares the form for the next number.
+performSquare() calculates the square of the current number.
+calculateResult() performs the calculation based on the operator and displays the result.
+Validations:
+
+Alerts are shown if the user tries to calculate without entering numbers or if they attempt to divide by zero.
+Incomplete expressions or missing inputs trigger validation messages.
